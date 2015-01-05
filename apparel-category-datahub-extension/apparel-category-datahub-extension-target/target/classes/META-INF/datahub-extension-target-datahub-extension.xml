@@ -1,0 +1,186 @@
+<!-- ~ [y] hybris Platform ~ ~ Copyright (c) 2000-2014 hybris AG ~ All rights 
+	reserved. ~ ~ This software is the confidential and proprietary information 
+	of hybris ~ ("Confidential Information"). You shall not disclose such Confidential 
+	~ Information and shall use it only in accordance with the terms of the ~ 
+	license agreement you entered into with hybris. -->
+<extension xmlns="http://www.hybris.com/schema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.hybris.com/schema/ datahub-metadata-schema-1.0.0.xsd"
+	name="apparel-category-datahub-extension-target">
+
+	<dependencies>
+		<dependency>
+			<extension>apparel-category-datahub-extension-canonical</extension>
+		</dependency>
+	</dependencies>
+
+	<targetSystems>
+		<targetSystem>
+			<name>HybrisB2BCoreInstallation</name>
+			<type>HybrisCore</type>
+			<exportURL>${datahub.extension.exportURL}</exportURL>
+			<userName>${datahub.extension.userName}</userName>
+			<password>${datahub.extension.password}</password>
+
+			<exportCodes />
+			<targetItems>
+				<item>
+					<type>B2BUnit</type>
+					<exportCode>B2BUnit</exportCode>
+					<description>Hybris platform representation of a B2BUnit
+					</description>
+					<updatable>true</updatable>
+					<canonicalItemSource>CanonicalCustomer</canonicalItemSource>
+					<status>ACTIVE</status>
+					<!-- defaults to ACTIVE -->
+					<attributes>
+						<attribute>
+							<name>uid</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>integrationKey
+							</transformationExpression>
+							<exportCode>uid[unique=true]</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>description</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>name</transformationExpression>
+							<exportCode>description</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>name</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>name</transformationExpression>
+							<exportCode>name</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>localizedName</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>name</transformationExpression>
+							<exportCode>locName</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>isBuyer</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>accountGroup=='DEBI'
+							</transformationExpression>
+							<exportCode>buyer</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+					</attributes>
+				</item>
+				<item>
+					<type>Address</type>
+					<exportCode>Address</exportCode>
+					<description>Hybris platform representation of an address
+					</description>
+					<updatable>true</updatable>
+					<canonicalItemSource>CanonicalCustomerAddressRel
+					</canonicalItemSource>
+					<status>ACTIVE</status>
+					<!-- defaults to ACTIVE -->
+					<attributes>
+						<attribute>
+							<name>owner</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>customerId</transformationExpression>
+							<exportCode>owner(B2BUnit.uid)</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>town</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>resolve('CanonicalAddress')?.city
+							</transformationExpression>
+							<exportCode>town</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>phone1</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>resolve('CanonicalAddress')?.telNumber
+							</transformationExpression>
+							<exportCode>phone1</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>streetName</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>resolve('CanonicalAddress')?.street
+							</transformationExpression>
+							<exportCode>streetname</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>streetNumber</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>resolve('CanonicalAddress')?.houseNumber
+							</transformationExpression>
+							<exportCode>streetnumber</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>postalCode</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>resolve('CanonicalAddress')?.postalCode
+							</transformationExpression>
+							<exportCode>postalcode</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>country</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>resolve('CanonicalAddress')?.country
+							</transformationExpression>
+							<exportCode>country(isocode)</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>contactAddress</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>addressType=='DEFAULT'
+							</transformationExpression>
+							<exportCode>contactAddress</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>billingAddress</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>addressType=='BILL_TO'
+							</transformationExpression>
+							<exportCode>billingAddress</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>shippingAddress</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>addressType=='SHIP_TO'
+							</transformationExpression>
+							<exportCode>shippingAddress</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+					</attributes>
+				</item>
+			</targetItems>
+		</targetSystem>
+	</targetSystems>
+
+</extension>

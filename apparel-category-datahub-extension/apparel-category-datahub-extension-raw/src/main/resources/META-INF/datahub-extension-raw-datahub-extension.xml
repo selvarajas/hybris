@@ -1,0 +1,55 @@
+<!-- ~ [y] hybris Platform ~ ~ Copyright (c) 2000-2014 hybris AG ~ All rights 
+	reserved. ~ ~ This software is the confidential and proprietary information 
+	of hybris ~ ("Confidential Information"). You shall not disclose such Confidential 
+	~ Information and shall use it only in accordance with the terms of the ~ 
+	license agreement you entered into with hybris. -->
+<extension xmlns="http://www.hybris.com/schema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.hybris.com/schema/ datahub-metadata-schema-1.0.0.xsd"
+	name="apparel-category-datahub-extension-raw">
+
+	<rawItems>
+		<item>
+			<type>RawCustomer</type>
+			<description>Raw representation of the customer</description>
+			<attributes>
+				<attribute>
+					<name>name</name>
+				</attribute>
+				<attribute>
+					<name>accountGroup</name>
+				</attribute>
+				<attribute>
+					<name>street</name>
+				</attribute>
+				<attribute>
+					<name>city</name>
+				</attribute>
+				<attribute>
+					<name>telNumber</name>
+				</attribute>
+				<attribute>
+					<name>houseNumber</name>
+				</attribute>
+				<attribute>
+					<name>postalCode</name>
+				</attribute>
+				<attribute>
+					<name>country</name>
+				</attribute>
+				<attribute>
+					<name>region</name>
+				</attribute>
+				<attribute>
+					<name>billTo</name>
+				</attribute>
+				<attribute>
+					<name>shipTo</name>
+				</attribute>
+				<attribute>
+					<name>integrationKey</name>
+				</attribute>
+			</attributes>
+		</item>
+	</rawItems>
+
+</extension>
